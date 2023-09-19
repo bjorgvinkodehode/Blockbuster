@@ -1,0 +1,18 @@
+Footer {
+  background: transparent;
+}
+.footer-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  right: 50%;
+  bottom: 10px;
+}
+
+.social-icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
