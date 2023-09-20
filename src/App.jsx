@@ -7,6 +7,7 @@ import Films from './Films';
 import Footer from './Footer';
 import Random from './Random';
 
+
 import { useEffect } from 'react';
 
 function Header() {
