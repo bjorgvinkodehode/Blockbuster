@@ -11,12 +11,12 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  padding: 1em;
+  padding: 0.4em;
 }
 
 .first-row {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .second-row .movie-info {
@@ -24,7 +24,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #252525;
   max-width: 500px;
-  padding: 2em;
+  padding: 1em;
   border-radius: 8px;
 }
 
@@ -60,11 +60,11 @@ select {
   h2,
   label,
   p {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   select,
   button {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 }

@@ -25,7 +25,6 @@ function Random() {
   return (
     <main className="main-container">
       <div className="first-row">
-        <h1>What to Watch</h1>
         <label htmlFor="select-Genre">Choose a genre:</label>
         <select id="select-Genre">
         <option value="27">Horror</option>

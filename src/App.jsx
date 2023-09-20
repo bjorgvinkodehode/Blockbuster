@@ -16,21 +16,20 @@ function Header() {
   let title;
   switch (location.pathname) {
     case '/Films':
-      title = 'Films';
+      title = '';
       break;
      case '/Random':
-       title = 'Random';
+       title = '';
       break;
     // case '/contact':
     //   title = 'Contact';
     //   break;
-    default:
-      title = 'Blockbuster';
-      break;
+ 
   }
 
   return (
     <header className="header-grid">
+      <h1 className="Blockbuster">{title}</h1>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -39,7 +38,6 @@ function Header() {
          {/*  <li><Link to="/">Contact</Link></li> */}
         </ul>
       </nav>
-      <h1 className="Blockbuster">{title}</h1>
     </header>
   );
 }

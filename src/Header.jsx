@@ -5,7 +5,7 @@ function Header() {
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#Films">Films</a></li>
-                    <li><a href="#Random">Surprise Me</a></li>
+                    <li><a href="#Random"></a></li>
                 </ul>
             </nav>
             <div className="Blockbuster">Blockbuster!</div>
