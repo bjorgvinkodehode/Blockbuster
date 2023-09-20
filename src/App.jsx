@@ -1,4 +1,5 @@
 /* import  { useEffect } from 'react'; */
+import { useEffect } from 'react';
 import './App.css';
 import './Header.css';
 import { HashRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
@@ -8,8 +9,6 @@ import Footer from './Footer';
 import Random from './Random';
 import SearchMovies from './SearchMovies';
 
-
-import { useEffect } from 'react';
 
 function Header() {
   const location = useLocation();

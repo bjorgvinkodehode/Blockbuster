@@ -1,10 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getRandomMovie, getMovieTrailer } from './API';
 import './Random.css';
 
 function Random() {
   const [movie, setMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const movieImg = document.querySelector("#movie img");
+      if (width <= 768) {
+        movieImg.src = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
+      } else {
+        movieImg.src = `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
+      }
+    };
+
+    
+    handleResize();
+
+   
+    window.addEventListener('resize', handleResize);
+    
+   
+    return () => window.removeEventListener('resize', handleResize);
+  }, [movie]);
 
   const findMovie = async () => {
     const selectGenre = document.getElementById("select-Genre");
@@ -51,14 +72,14 @@ function Random() {
       </div>
       <div className="second-row">
         {movie && (
-           <div className="movie-info" style={{ display: movie ? 'block' : 'none' }}>
-           <div id="movie">
-             <h2>{movie ? movie.title : 'Movie Title'}</h2>
-             <p>{movie ? movie.overview : 'Movie Overview'}</p>
-             <button id="open-trailer" onClick={openTrailer}>Watch Trailer</button>
-             <img src={movie ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : 'https://image.tmdb.org/t/p/w500/movie-poster-path'} alt={movie ? movie.title : 'Movie Title'}/>
-           </div>
-         </div>
+          <div className="movie-info" style={{ display: movie ? 'block' : 'none' }}>
+            <div id="movie">
+              <h2>{movie ? movie.title : 'Movie Title'}</h2>
+              <p>{movie ? movie.overview : 'Movie Overview'}</p>
+              <button id="open-trailer" onClick={openTrailer}>Watch Trailer</button>
+              <img src={movie ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : 'https://image.tmdb.org/t/p/w500/movie-poster-path'} alt={movie ? movie.title : 'Movie Title'} />
+            </div>
+          </div>
         )}
       </div>
     </main>

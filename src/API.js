@@ -10,7 +10,7 @@ export async function getRandomMovie(genre) {
       },
     }
   );
-  
+
   const data = await response.json();
   const randomIndex = Math.floor(Math.random() * data.results.length);
   const randomMovie = data.results[randomIndex];
@@ -26,24 +26,39 @@ export async function getMovieTrailer(movieId) {
       },
     }
   );
-  
+
   const data = await response.json();
   return data.results.length > 0 ? data.results[0] : null;
 }
 
-
 export async function searchMovies(query) {
-    const response = await fetch(
-      `${BASE_URL}/search/movie?query=${query}`,
-      {
-        headers: {
-          Authorization: API_KEY,
-        },
-      }
-    );
-    
-    const data = await response.json();
-    return data.results;
-  }
+  const response = await fetch(
+    `${BASE_URL}/search/movie?query=${query}`,
+    {
+      headers: {
+        Authorization: API_KEY,
+      },
+    }
+  );
 
- 
+  const data = await response.json();
+  return data.results;
+}
+
+export function setImageSize(width, poster_path) {
+  let imgSrc = '';
+  if (width <= 320) {
+    imgSrc = `https://image.tmdb.org/t/p/w92${poster_path}`;
+  } else if (width <= 480) {
+    imgSrc = `https://image.tmdb.org/t/p/w154${poster_path}`;
+  } else if (width <= 768) {
+    imgSrc = `https://image.tmdb.org/t/p/w185${poster_path}`;
+  } else if (width <= 1024) {
+    imgSrc = `https://image.tmdb.org/t/p/w342${poster_path}`;
+  } else if (width <= 1280) {
+    imgSrc = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  } else {
+    imgSrc = `https://image.tmdb.org/t/p/w780${poster_path}`;
+  }
+  return imgSrc;
+}
