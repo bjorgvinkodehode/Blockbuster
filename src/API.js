@@ -30,3 +30,20 @@ export async function getMovieTrailer(movieId) {
   const data = await response.json();
   return data.results.length > 0 ? data.results[0] : null;
 }
+
+
+export async function searchMovies(query) {
+    const response = await fetch(
+      `${BASE_URL}/search/movie?query=${query}`,
+      {
+        headers: {
+          Authorization: API_KEY,
+        },
+      }
+    );
+    
+    const data = await response.json();
+    return data.results;
+  }
+
+ 
