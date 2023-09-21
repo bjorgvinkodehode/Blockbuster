@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { searchMovies } from './API';
+import { Link } from 'react-router-dom';
 import './SearchMovies.css';
 
 function SearchMovies() {
     const [searchQuery, setSearchQuery] = useState('');
     const [movies, setMovies] = useState([]);
+    
   
     const handleSearch = async () => {
       const results = await searchMovies(searchQuery);
       setMovies(results);
+      
+      
     };
   
     return (
@@ -26,8 +30,10 @@ function SearchMovies() {
         <div className="results-row">
           {movies.map((movie, index) => (
             <div key={index}>
-              <h3>{movie.title}</h3>
-              <img src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} alt={movie.title} />
+                <Link to={`/movieDetails/${movie.id}`}>
+              <h3>{movie.title}</h3> 
+              </Link>
+              <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w92${movie.poster_path}` : 'default_image_path_here'} alt={movie.title} />
               <p>{movie.overview}</p>
             </div>
           ))}

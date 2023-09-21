@@ -8,6 +8,7 @@ import Films from './Films';
 import Footer from './Footer';
 import Random from './Random';
 import SearchMovies from './SearchMovies';
+import MovieDetails from './MovieDetails';
 
 
 function Header() {
@@ -64,6 +65,7 @@ function App() {
           <Route path="/Films" element={<Films />} />
           <Route path="/Random" element={<Random />} />
           {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/movieDetails/:id" element={<MovieDetails />} />
         </Routes>
         <SearchMovies/>
         <Footer />

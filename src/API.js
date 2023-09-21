@@ -62,3 +62,19 @@ export function setImageSize(width, poster_path) {
   }
   return imgSrc;
 }
+
+export async function getMovieCredits(movieId) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}/credits`,
+    {
+      headers: {
+        Authorization: API_KEY,
+      },
+    }
+  );
+  return await response.json();
+}
+
+export async function getMovieRatings(movieId) {
+  // Implement this function based on the API's capabilities
+}
