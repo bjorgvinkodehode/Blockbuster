@@ -1,6 +1,14 @@
 import PropTypes from "prop-types";
 
 const Ratings = ({ ratings }) => {
+    const defaultRatings = {
+      imdbRating: 0,
+      rottenTomatoRating: 0,
+      rogerEbertRating: 0,
+    };
+  
+    ratings = ratings || defaultRatings;
+    
     return(
         <div>
             <h2>Ratings</h2>
