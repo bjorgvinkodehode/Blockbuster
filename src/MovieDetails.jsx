@@ -4,14 +4,13 @@ import { useParams } from 'react-router-dom';
 import Ratings from './Ratings';
 
 const API_BASE_URL = "https://api.themoviedb.org/3/movie/";
-const API_KEY = import.meta.env.VITE_API_KEY;
+const VITE_API_KEY = import.meta.env.VITE_API_KEY;
 const defaultImageURL = "/assets/placeholder";
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const [actors, setActors] = useState([]);
   const [directors, setDirectors] = useState([]);
-  const [ratings, setRatings] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   
   const { id: movieId } = useParams();
@@ -19,7 +18,7 @@ function MovieDetails() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios.get(`${API_BASE_URL}${movieId}?api_key=${API_KEY}`)
+    axios.get(`${API_BASE_URL}${movieId}?api_key=${VITE_API_KEY}`)
       .then(response => {
         setMovieDetails(response.data);
       })
@@ -27,7 +26,7 @@ function MovieDetails() {
         console.error("Error fetching movie details:", error);
       });
 
-    axios.get(`${API_BASE_URL}${movieId}/credits?api_key=${API_KEY}`)
+    axios.get(`${API_BASE_URL}${movieId}/credits?api_key=${VITE_API_KEY}`)
       .then(response => {
         setActors(response.data.cast);
         setDirectors(response.data.crew.filter(person => person.job === 'Director'));
@@ -39,8 +38,6 @@ function MovieDetails() {
         setIsLoading(false);
       });
 
-    // TODO: Fetch ratings from different sources here
-    // setRatings(fetchedRatings);
   }, [movieId]);
 
   if (isLoading) {
@@ -60,16 +57,14 @@ function MovieDetails() {
             ))}
         </ul>
 
-        <h2>Direcotrs</h2>
+        <h2>Directors</h2>
         <ul>
             {directors.map((director, index) => (
                 <li key={index}>{director.name}</li>
             ))}
         </ul>
-
-        <Ratings ratings={ratings} />
+        <Ratings tmdbRating={movieDetails.vote_average} />
         </div>
-
     );
 }
 

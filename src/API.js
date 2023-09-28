@@ -1,14 +1,9 @@
-const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE_URL = "https://api.themoviedb.org/3";
+import { API_KEY, BASE_URL } from './constants';
+console.log('API Key:', API_KEY);
 
 export async function getRandomMovie(genre) {
   const response = await fetch(
-    `${BASE_URL}/discover/movie?with_genres=${genre}`,
-    {
-      headers: {
-        Authorization: API_KEY,
-      },
-    }
+    `${BASE_URL}/discover/movie?with_genres=${genre}&api_key=${API_KEY}`
   );
 
   const data = await response.json();
@@ -19,12 +14,7 @@ export async function getRandomMovie(genre) {
 
 export async function getMovieTrailer(movieId) {
   const response = await fetch(
-    `${BASE_URL}/movie/${movieId}/videos`,
-    {
-      headers: {
-        Authorization: API_KEY,
-      },
-    }
+    `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
   );
 
   const data = await response.json();
@@ -32,17 +22,27 @@ export async function getMovieTrailer(movieId) {
 }
 
 export async function searchMovies(query) {
-  const response = await fetch(
-    `${BASE_URL}/search/movie?query=${query}`,
-    {
-      headers: {
-        Authorization: API_KEY,
-      },
-    }
-  );
+  try {
+    const response = await fetch(
+      `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`
+    );
 
-  const data = await response.json();
-  return data.results;
+    if (!response.ok) {
+      throw new Error(`Network response was not ok ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    if (data.results) {
+      return data.results;
+    } else {
+      console.error('Unexpected response format:', data);
+      return [];
+    }
+  } catch (error) {
+    console.error('Error fetching search results:', error);
+    throw error;  // re-throw the error to be handled by the calling function
+  }
 }
 
 export function setImageSize(width, poster_path) {
@@ -65,16 +65,11 @@ export function setImageSize(width, poster_path) {
 
 export async function getMovieCredits(movieId) {
   const response = await fetch(
-    `${BASE_URL}/movie/${movieId}/credits`,
-    {
-      headers: {
-        Authorization: API_KEY,
-      },
-    }
+    `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
   );
   return await response.json();
 }
 
-export async function getMovieRatings(movieId) {
+export async function getMovieRatings() {
   // Implement this function based on the API's capabilities
 }

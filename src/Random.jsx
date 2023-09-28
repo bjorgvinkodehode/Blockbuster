@@ -5,6 +5,7 @@ import './Random.css';
 function Random() {
   const [movie, setMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);
+  
 
   useEffect(() => {
     const handleResize = () => {

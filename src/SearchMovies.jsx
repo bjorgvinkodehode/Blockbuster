@@ -9,10 +9,18 @@ function SearchMovies() {
     
   
     const handleSearch = async () => {
-      const results = await searchMovies(searchQuery);
-      setMovies(results);
-      
-      
+      try {
+        const results = await searchMovies(searchQuery);
+        if (Array.isArray(results)) {
+          setMovies(results);
+        } else {
+          console.error('Unexpected result format:', results);
+          setMovies([]);
+        }
+      } catch (error) {
+        console.error(error);
+        setMovies([]);
+      }
     };
   
     return (
