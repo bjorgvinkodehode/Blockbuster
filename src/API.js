@@ -1,5 +1,5 @@
 import { API_KEY, BASE_URL } from './constants';
-console.log('API Key:', API_KEY);
+
 
 export async function getRandomMovie(genre) {
   const response = await fetch(
@@ -70,6 +70,3 @@ export async function getMovieCredits(movieId) {
   return await response.json();
 }
 
-export async function getMovieRatings() {
-  // Implement this function based on the API's capabilities
-}

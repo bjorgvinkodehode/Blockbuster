@@ -7,7 +7,7 @@ import Home from './Home';
 import Films from './Films';
 import Footer from './Footer';
 import Random from './Random';
-import SearchMovies from './SearchMovies';
+// import SearchMovies from './SearchMovies';
 import MovieDetails from './MovieDetails';
 
 
@@ -66,8 +66,8 @@ function App() {
           <Route path="/Random" element={<Random />} />
           {/* <Route path="/contact" element={<Contact />} /> */}
           <Route path="/movieDetails/:id" element={<MovieDetails />} />
+          
         </Routes>
-        <SearchMovies/>
         <Footer />
       </div>
     </Router>
