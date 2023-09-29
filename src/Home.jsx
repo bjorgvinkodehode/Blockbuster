@@ -9,10 +9,13 @@ function Home() {
     return (
       <section>
         <h1>Welcome to our Movie App</h1>
+        
         <NowPlaying />
        <PopularMovies />
        <TopRatedMovies />
        <UpcomingMovies />
+       
+       
       
       </section>
       

@@ -6,7 +6,7 @@ function NowPlaying() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
+ 
   return (
     <div>
       <h1>Now Playing</h1>

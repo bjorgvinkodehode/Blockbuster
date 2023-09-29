@@ -46,22 +46,38 @@ export async function searchMovies(query) {
 }
 
 export function setImageSize(width, poster_path) {
+  // Initialize an empty string for the image source URL
   let imgSrc = '';
-  if (width <= 320) {
-    imgSrc = `https://image.tmdb.org/t/p/w92${poster_path}`;
-  } else if (width <= 480) {
-    imgSrc = `https://image.tmdb.org/t/p/w154${poster_path}`;
-  } else if (width <= 768) {
-    imgSrc = `https://image.tmdb.org/t/p/w185${poster_path}`;
-  } else if (width <= 1024) {
-    imgSrc = `https://image.tmdb.org/t/p/w342${poster_path}`;
-  } else if (width <= 1280) {
-    imgSrc = `https://image.tmdb.org/t/p/w500${poster_path}`;
-  } else {
-    imgSrc = `https://image.tmdb.org/t/p/w780${poster_path}`;
+  
+  // Define the source for the poster path
+  // Check if the global object someObject exists and has a poster_path
+  // If it doesn't, fall back to the poster_path parameter
+  const posterPath = someObject ? someObject.poster_path : poster_path;
+  
+  // If neither the global object nor the parameter provide a poster_path, return an empty string
+  if (!posterPath) {
+    return imgSrc;
   }
+
+  // Determine the appropriate image size based on the screen width
+  if (width <= 320) {
+    imgSrc = `https://image.tmdb.org/t/p/w92${posterPath}`;
+  } else if (width <= 480) {
+    imgSrc = `https://image.tmdb.org/t/p/w154${posterPath}`;
+  } else if (width <= 768) {
+    imgSrc = `https://image.tmdb.org/t/p/w185${posterPath}`;
+  } else if (width <= 1024) {
+    imgSrc = `https://image.tmdb.org/t/p/w342${posterPath}`;
+  } else if (width <= 1280) {
+    imgSrc = `https://image.tmdb.org/t/p/w500${posterPath}`;
+  } else {
+    imgSrc = `https://image.tmdb.org/t/p/w780${posterPath}`;
+  }
+  
+  // Return the constructed image source URL
   return imgSrc;
 }
+
 
 export async function getMovieCredits(movieId) {
   const response = await fetch(
