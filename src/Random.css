@@ -26,6 +26,7 @@ body {
   max-width: 500px;
   padding: 1em;
   border-radius: 8px;
+  height: 630px;
 }
 
 #open-trailer {

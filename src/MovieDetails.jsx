@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Ratings from './Ratings';
-
-const API_BASE_URL = "https://api.themoviedb.org/3/movie/";
-const VITE_API_KEY = import.meta.env.VITE_API_KEY;
-const defaultImageURL = "/assets/placeholder";
+import { getMovieDetails, getMovieCredits } from './API'; 
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
@@ -18,18 +14,19 @@ function MovieDetails() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios.get(`${API_BASE_URL}${movieId}?api_key=${VITE_API_KEY}`)
-      .then(response => {
-        setMovieDetails(response.data);
+    getMovieDetails(movieId)
+      .then(data => {
+        setMovieDetails(data);
       })
       .catch(error => {
         console.error("Error fetching movie details:", error);
       });
 
-    axios.get(`${API_BASE_URL}${movieId}/credits?api_key=${VITE_API_KEY}`)
-      .then(response => {
-        setActors(response.data.cast);
-        setDirectors(response.data.crew.filter(person => person.job === 'Director'));
+
+    getMovieCredits(movieId)
+      .then(data => {
+        setActors(data.cast);
+        setDirectors(data.crew.filter(person => person.job === 'Director'));
       })
       .catch(error => {
         console.error("Error fetching movie credits:", error);
@@ -69,3 +66,5 @@ function MovieDetails() {
 }
 
 export default MovieDetails;
+
+

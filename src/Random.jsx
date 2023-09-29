@@ -9,12 +9,25 @@ function Random() {
 
   useEffect(() => {
     const handleResize = () => {
+      // Check if movie object is null or undefined
+      if (!movie) return;
+    
       const width = window.innerWidth;
+    
+      // Query the DOM for the movie image element
       const movieImg = document.querySelector("#movie img");
+    
+      // Check if movieImg element exists in the DOM
+      if (!movieImg) return;
+    
+      // Use optional chaining to safely access poster_path
+      const posterPath = movie?.poster_path || '';
+    
+      // Update the image source based on window width
       if (width <= 768) {
-        movieImg.src = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
+        movieImg.src = `https://image.tmdb.org/t/p/w185${posterPath}`;
       } else {
-        movieImg.src = `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
+        movieImg.src = `https://image.tmdb.org/t/p/w342${posterPath}`;
       }
     };
 

@@ -10,11 +10,17 @@ function NowPlaying() {
   return (
     <div>
       <h1>Now Playing</h1>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
+      <div className='poster'>
+      {movies.map((movie) => (
+          <div key={movie.id}>
+            <img
+             src= {`https://image.tmdb.org/t/p/w92${movie.poster_path}`} 
+             alt={movie.title}
+             />
+            {movie.title} 
+            </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

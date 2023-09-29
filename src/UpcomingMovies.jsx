@@ -10,12 +10,17 @@ function UpcomingMovies() {
 
   return (
     <div>
-      <h1>Upcoming Movies</h1>
-      <ul>
+    <div className='poster'>
         {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>  // Use unique movie id as the key
+          <div key={movie.id}>
+            <img
+             src= {`https://image.tmdb.org/t/p/w92${movie.poster_path}`} 
+             alt={movie.title}
+             />
+            {movie.title} 
+            </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

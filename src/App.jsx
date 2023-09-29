@@ -1,4 +1,3 @@
-/* import  { useEffect } from 'react'; */
 import { useEffect } from 'react';
 import './App.css';
 import './Header.css';
@@ -7,11 +6,11 @@ import Home from './Home';
 import Films from './Films';
 import Footer from './Footer';
 import Random from './Random';
-// import SearchMovies from './SearchMovies';
 import MovieDetails from './MovieDetails';
+import Item from './Item';
 
 
-function Header() {
+function Header({ movie }) {
   const location = useLocation();
 
   let title;
@@ -19,13 +18,13 @@ function Header() {
     case '/Films':
       title = '';
       break;
-     case '/Random':
-       title = '';
+      case '/Random':
+        title = '';
+       break;
+       case '/movie':
+      title = '';
       break;
-    // case '/contact':
-    //   title = 'Contact';
-    //   break;
- 
+
   }
 
   return (
@@ -36,7 +35,7 @@ function Header() {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/Films">Films</Link></li>
           <li><Link to="/Random">Random</Link></li>
-         {/*  <li><Link to="/">Contact</Link></li> */}
+          <li><Link to={`/movie/${movie.id}`}>{movie.title}</Link></li>
         </ul>
       </nav>
     </header>
@@ -58,18 +57,15 @@ function App() {
 
   return (
     <Router>
-      <div className='container' style={{ position: 'relative', zIndex: 1 }}>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Films" element={<Films />} />
           <Route path="/Random" element={<Random />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/movie/:id" element={<Item />} />
           <Route path="/movieDetails/:id" element={<MovieDetails />} />
-          
         </Routes>
         <Footer />
-      </div>
     </Router>
   );
 }

@@ -1,9 +1,13 @@
-import { API_KEY, BASE_URL } from './constants';
-
+import { API_KEY, BASE_URL, BEARER_TOKEN } from './constants';
 
 export async function getRandomMovie(genre) {
   const response = await fetch(
-    `${BASE_URL}/discover/movie?with_genres=${genre}&api_key=${API_KEY}`
+    `${BASE_URL}/discover/movie?with_genres=${genre}&api_key=${API_KEY}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${BEARER_TOKEN}`,
+      }
+    }
   );
 
   const data = await response.json();
@@ -14,7 +18,12 @@ export async function getRandomMovie(genre) {
 
 export async function getMovieTrailer(movieId) {
   const response = await fetch(
-    `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
+    `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${BEARER_TOKEN}`,
+      }
+    }
   );
 
   const data = await response.json();
@@ -24,7 +33,12 @@ export async function getMovieTrailer(movieId) {
 export async function searchMovies(query) {
   try {
     const response = await fetch(
-      `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`
+      `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${BEARER_TOKEN}`,
+        }
+      }
     );
 
     if (!response.ok) {
@@ -74,15 +88,33 @@ export function setImageSize(width, poster_path) {
     imgSrc = `https://image.tmdb.org/t/p/w780${posterPath}`;
   }
   
-  // Return the constructed image source URL
+ 
   return imgSrc;
 }
 
 
-export async function getMovieCredits(movieId) {
+export async function getMovieDetails(movieId) {
   const response = await fetch(
-    `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
+    `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${BEARER_TOKEN}`,
+      }
+    }
   );
   return await response.json();
 }
 
+
+
+export async function getMovieCredits(movieId) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${BEARER_TOKEN}`,
+      }
+    }
+  );
+  return await response.json();
+}

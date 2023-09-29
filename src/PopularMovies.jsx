@@ -1,7 +1,7 @@
 import { useFetchMovies } from './useFetchMovies'; 
 
 function PopularMovies() {
-  const { movies, error } = useFetchMovies('/movie/popular_movies');
+  const { movies, error } = useFetchMovies('/movie/popular');
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -10,11 +10,17 @@ function PopularMovies() {
   return (
     <div>
       <h1>Popular Movies</h1>
-      <ul>
+      <div className='poster'>
         {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
+          <div key={movie.id}>
+            <img
+             src= {`https://image.tmdb.org/t/p/w92${movie.poster_path}`} 
+             alt={movie.title}
+             />
+            {movie.title} 
+            </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
