@@ -1,12 +1,11 @@
 .poster {
   display: flex;
-  overflow-x: auto; /* For horizontal scrolling */
-  gap: 16px; /* You can adjust this gap as you like */
+  overflow-x: auto;
+  gap: 16px;
 }
 
-/* Stylize each movie item */
 .poster > div {
-  flex: none; /* Prevent items from growing or shrinking */
+  flex: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,7 +13,6 @@
   margin: 10px;
 }
 
-/* Style for the rows in Home component */
 .row {
   display: flex;
   flex-direction: row;

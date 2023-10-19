@@ -9,7 +9,7 @@ import SearchMovies from "./SearchMovies";
 function Home() {
     return (
       <section >
-        <h1>Welcome to our Movie App</h1>
+        <h1>Welcome to &quot;Blockbuster&quot;</h1>
 
         <SearchMovies />
         <div className='row'>

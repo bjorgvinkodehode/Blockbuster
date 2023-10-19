@@ -118,3 +118,27 @@ export async function getMovieCredits(movieId) {
   );
   return await response.json();
 }
+
+export const getNowPlaying = async () => {
+  const response = await fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}`);
+  const data = await response.json();
+  return data.results;
+};
+
+export const getUpcomingMovies = async () => {
+  const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`);
+  const data = await response.json();
+  return data.results;
+};
+
+export const getTopRatedMovies = async () => {
+  const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`);
+  const data = await response.json();
+  return data.results;
+};
+
+export const getPopularMovies = async () => {
+  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  const data = await response.json();
+  return data.results;
+};
