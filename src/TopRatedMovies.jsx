@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useFetchMovies } from './useFetchMovies'; // Import the custom hook
 
 function TopRatedMovies() {
@@ -14,12 +15,14 @@ function TopRatedMovies() {
       <div className='poster'>
         {movies.map((movie) => (
           <div key={movie.id}>
-            <img
-             src= {`https://image.tmdb.org/t/p/w92${movie.poster_path}`} 
-             alt={movie.title}
-             />
-            {movie.title} 
-            </div>
+            <Link to={`/movie/${movie.id}`}>  {/* Wrap with Link */}
+              <img
+                src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} 
+                alt={movie.title}
+              />
+              {movie.title}
+            </Link>
+          </div>
         ))}
       </div>
     </div>
