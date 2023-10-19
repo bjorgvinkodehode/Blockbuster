@@ -59,7 +59,7 @@ export async function searchMovies(query) {
   }
 }
 
-export function setImageSize(width, poster_path) {
+export function setImageSize(width, poster_path, someObject) {
   // Initialize an empty string for the image source URL
   let imgSrc = '';
   

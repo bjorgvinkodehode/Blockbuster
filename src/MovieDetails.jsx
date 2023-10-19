@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Ratings from './Ratings';
 import { getMovieDetails, getMovieCredits } from './API'; 
 
+
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const [actors, setActors] = useState([]);
@@ -44,7 +45,7 @@ function MovieDetails() {
   return (
         <div>
         <h1>{movieDetails.title}</h1>
-        <img src={movieDetails.poster_path ? `https://image.tmdb.org/t/p/w342${movieDetails.poster_path}` : defaultImageURL} alt={movieDetails.title} />
+        <img src={movieDetails.poster_path ? `https://image.tmdb.org/t/p/w342${movieDetails.poster_path}` : "/assets/placeholder.jpg"} alt={movieDetails.title} />
         <p>{movieDetails.overview}</p>
 
         <h2>Actors</h2>

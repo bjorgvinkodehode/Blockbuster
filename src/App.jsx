@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Random from './Random';
 import MovieDetails from './MovieDetails';
 import Item from './Item';
+import PropTypes from 'prop-types';
 
 
 function Header({ movie }) {
@@ -27,6 +28,15 @@ function Header({ movie }) {
 
   }
 
+  Header.propTypes = {
+    movie: PropTypes.shape({ 
+      id: PropTypes.number,
+      title: PropTypes.string
+    })
+
+    };
+
+
   return (
     <header className="header-grid">
       <h1 className="Blockbuster">{title}</h1>
@@ -35,7 +45,7 @@ function Header({ movie }) {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/Films">Films</Link></li>
           <li><Link to="/Random">Random</Link></li>
-          <li><Link to={`/movie/${movie.id}`}>{movie.title}</Link></li>
+          <li><Link to={"/movie/${movie.id}"}>{movie.title}</Link></li>
         </ul>
       </nav>
     </header>
