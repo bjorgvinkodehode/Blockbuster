@@ -9,9 +9,10 @@ import SearchMovies from "./SearchMovies";
 function Home() {
     return (
       <section >
-        <h1>Welcome to &quot;Blockbuster&quot;</h1>
-
+        
+        <div className='search'> 
         <SearchMovies />
+        </div>
         <div className='row'>
         <NowPlaying />
         </div>

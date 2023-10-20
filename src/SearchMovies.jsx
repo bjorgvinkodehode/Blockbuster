@@ -41,7 +41,7 @@ function SearchMovies() {
                 <Link to={`/movieDetails/${movie.id}`}>
               <h3>{movie.title}</h3> 
               </Link>
-              <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w92${movie.poster_path}` : 'default_image_path_here'} alt={movie.title} />
+              <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : 'default_image_path_here'} alt={movie.title} />
               <p>{movie.overview}</p>
             </div>
           ))}

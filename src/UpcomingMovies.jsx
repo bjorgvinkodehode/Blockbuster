@@ -17,7 +17,7 @@ function UpcomingMovies() {
         <div key={movie.id}>
           <Link to={`/movie/${movie.id}`}>  {/* Wrap with Link */}
             <img
-              src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} 
+              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} 
               alt={movie.title}
             />
             {movie.title}
