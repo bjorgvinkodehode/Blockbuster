@@ -4,11 +4,16 @@
   justify-content: center;
   align-items: center;
 }
+.top {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  gap: 1rem;
+}
 
 img {
-  width: 500px;
-  height: 800px;
-  margin: 10px;
+  width: 200px;
+  height: auto;
 }
 
 .description {
@@ -21,4 +26,10 @@ img {
 title {
   margin-right: auto;
   margin-left: auto;
+}
+h1 {
+  margin-left: 0.5rem;
+}
+
+.actors {
 }

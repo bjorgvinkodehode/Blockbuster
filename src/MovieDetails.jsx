@@ -39,16 +39,20 @@ const MovieDetails = () => {
   return (
     <div className='movieDetails'>
       <h1 className='title'>{movieDetails.title}</h1>
+      <div className='top'>
       <img src={movieDetails.poster_path ? `https://image.tmdb.org/t/p/w342${movieDetails.poster_path}` : '/assets/placeholder.jpg'} alt={movieDetails.title} />
-      <p className='description'>{movieDetails.overview}</p>
-      <Ratings tmdbRating={movieDetails.vote_average} />
-      <h2>Directors</h2>
+      <h2 className='directors'>Directors</h2>
       <ul>
         {directors.map((director, index) => (
-          <li key={index}>{director.name}</li>
+          <li className='director' key={index}>{director.name}</li>
         ))}
       </ul>
-      <h2>Actors</h2>
+      </div>
+      <Ratings tmdbRating={movieDetails.vote_average} />
+      <p className='description'>{movieDetails.overview}</p>
+     
+      
+      <h2 className='actors'>Actors</h2>
       <ul>
         {actors.map((actor, index) => (
           <li key={index}>{actor.name}</li>
