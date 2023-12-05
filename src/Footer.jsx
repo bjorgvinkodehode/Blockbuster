@@ -8,7 +8,7 @@ function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img src="assets/social.png" alt="Twitter" className="social-icon" />
+                    <img src="/assets/social.png" alt="Twitter" className="social-icon" />
                 </a>
                 <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                     <img src="assets/facebook.png" alt="Facebook" className="social-icon" />

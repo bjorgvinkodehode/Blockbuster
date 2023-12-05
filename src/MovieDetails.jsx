@@ -40,7 +40,7 @@ const MovieDetails = () => {
     <div className='movieDetails'>
       <h1 className='title'>{movieDetails.title}</h1>
       <div className='top'>
-      <img src={movieDetails.poster_path ? `https://image.tmdb.org/t/p/w342${movieDetails.poster_path}` : '/assets/placeholder.jpg'} alt={movieDetails.title} />
+      <img className='poster' src={movieDetails.poster_path ? `https://image.tmdb.org/t/p/w342${movieDetails.poster_path}` : '/assets/placeholder.jpg'} alt={movieDetails.title} />
       <h2 className='directors'>Directors</h2>
       <ul>
         {directors.map((director, index) => (
